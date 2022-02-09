@@ -6,9 +6,9 @@
         <li><a href="#">Item 2</a></li>
         <li><a href="#">Item 3</a></li>
         <li><a href="#">Item 4</a></li>
-        <li><a href="#">Item 1</a></li>
-        <li><a href="#">Item 2</a></li>
-        <li><a href="#">Item 3</a></li>
+        <li><a href="#">Item 5</a></li>
+        <li><a href="#">Item 6</a></li>
+        <li><a href="#">Item 7</a></li>
       </ul>
     </div>
   </div>
@@ -28,6 +28,7 @@ export default class Nav extends Vue {}
   height: 100vh;
   width: 30vw;
   background-color: #999900;
+  float: left;
   .menu {
     width: 100%;
   }

@@ -1,16 +1,19 @@
 <template>
   <div>
     <NavSection />
+    <MainSection />
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
 import NavSection from './components/NavSection.vue'
+import MainSection from './components/MainSection.vue'
 
 @Component({
   components: {
     NavSection,
+    MainSection,
   },
 })
 export default class App extends Vue {}
