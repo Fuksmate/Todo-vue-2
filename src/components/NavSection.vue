@@ -27,6 +27,8 @@ export default class Nav extends Vue {}
 .nav-section {
   height: 100vh;
   width: 30vw;
+  position: fixed;
+  left: 0;
   background-color: #999900;
   float: left;
   .menu {
