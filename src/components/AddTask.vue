@@ -26,9 +26,13 @@ export default class AddTask extends Vue {
   title = ''
   desc = ''
 
+    RadnomNumber(): number {
+        return Math.floor(Math.random() * 100) + 1
+    }
+
   addTask(): void {
     this.todos.push({
-      id: Math.random() + 1,
+      id: this.RandomNumber(),
       title: this.title,
       desc: this.desc,
       completed: true,
