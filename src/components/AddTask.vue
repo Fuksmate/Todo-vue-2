@@ -1,9 +1,9 @@
 <template>
   <div class="add-todo">
     <form>
-      <input type="text" placeholder="Title" />
-      <input type="text" placeholder="Description" />
-      <input type="submit" value="Submit" />
+      <input v-model="title" type="text" placeholder="Title"  required/>
+      <input v-model="desc" type="text" placeholder="Description" required />
+      <input @click="addTask()" type="submit" value="Submit" />
     </form>
   </div>
 </template>
@@ -11,10 +11,32 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
 
+export interface TaskInterface {
+  title: string
+  desc: string
+  id: number
+  completed: boolean
+}
 @Component({
   components: {},
 })
-export default class AddTask extends Vue {}
+export default class AddTask extends Vue {
+  title = ''
+  desc = ''
+  todos: TaskInterface[] = localStorage.todos
+    ? JSON.parse(localStorage.todos)
+    : []
+
+  addTask(): void {
+    this.todos.push({
+      id: Math.random(),
+      title: this.title,
+      desc: this.desc,
+      completed: true,
+    })
+    localStorage.setItem('todos', JSON.stringify(this.todos))
+  }
+}
 </script>
 
 <style lang="scss" scoped>

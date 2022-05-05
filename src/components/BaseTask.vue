@@ -1,8 +1,8 @@
 <template>
   <div class="task">
-    <h2 class="title">Idz na zakupy</h2>
+    <h2 class="title">{{ todo.title }}</h2>
     <span class="description">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit
+      {{ todo.desc }}
     </span>
     <div class="button-section">
       <button @click="open = true" class="button" type="button"></button>
@@ -14,14 +14,18 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
+import { Component, Vue, Prop } from 'vue-property-decorator'
 import EditTask from './EditTask.vue'
+import TaskInterface from './AddTask.vue'
 
 @Component({
   components: { EditTask },
 })
 export default class BaseTask extends Vue {
+  @Prop({ required: true }) todo!: TaskInterface
+
   open: false = false
+  
   closeWindow(close: false): void {
     this.open = close
   }
@@ -78,7 +82,6 @@ export default class BaseTask extends Vue {
       transform: translate3d(50%, 50%, 0) scale3d(0, 0, 0);
       transition: transform 0.45s ease-in-out;
     }
-
 
     button:hover::before {
       transform: translate3d(50%, 50%, 0) scale3d(15, 15, 15);

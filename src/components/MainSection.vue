@@ -1,11 +1,7 @@
 <template>
   <div class="main-section">
     <AddTask />
-    <BaseTask />
-    <BaseTask />
-    <BaseTask />
-    <BaseTask />
-    <BaseTask />
+    <BaseTask v-for="todo in todos" :key="todo.id" :todo="todo" />
   </div>
 </template>
 
@@ -13,13 +9,19 @@
 import { Component, Vue } from 'vue-property-decorator'
 import AddTask from './AddTask.vue'
 import BaseTask from './BaseTask.vue'
+import TaskInterface from './AddTask.vue'
+
 @Component({
   components: {
     AddTask,
     BaseTask,
   },
 })
-export default class main extends Vue {}
+export default class MainSection extends Vue {
+  todos: TaskInterface[] = localStorage.todos
+    ? JSON.parse(localStorage.todos)
+    : []
+}
 </script>
 
 <style lang="scss" scoped>

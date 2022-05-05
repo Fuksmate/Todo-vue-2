@@ -3,12 +3,6 @@
     <div class="menu">
       <ul>
         <li><a href="#">Item 1</a></li>
-        <li><a href="#">Item 2</a></li>
-        <li><a href="#">Item 3</a></li>
-        <li><a href="#">Item 4</a></li>
-        <li><a href="#">Item 5</a></li>
-        <li><a href="#">Item 6</a></li>
-        <li><a href="#">Item 7</a></li>
       </ul>
     </div>
   </div>
@@ -45,8 +39,6 @@ export default class Nav extends Vue {}
     padding: 30px 0;
     background-color: #cccc00;
     margin: 20px;
-  }
-  ul li:first-child {
   }
 }
 </style>
