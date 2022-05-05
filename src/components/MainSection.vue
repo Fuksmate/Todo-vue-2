@@ -26,7 +26,7 @@ import TaskInterface from './AddTask.vue'
 export default class MainSection extends Vue {
   todos: TaskInterface[] = []
 
-  created():void {
+  created(): void {
     if (localStorage.todos) {
       this.todos = JSON.parse(localStorage.todos)
     }
@@ -43,15 +43,15 @@ export default class MainSection extends Vue {
 
   removeTask(e: number): void {
     this.todos = this.todos.filter(function (obj) {
-      return obj.id != e
+      return obj.id !== e
     })
+
     this.addToLocalStorage()
   }
 
   isCompleted(e: number): void {
     console.log(e)
   }
-  
 }
 </script>
 

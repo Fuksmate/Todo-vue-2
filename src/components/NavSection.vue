@@ -2,7 +2,9 @@
   <div class="nav-section">
     <div class="menu">
       <ul>
-        <li><a href="#">Item 1</a></li>
+        <li><a href="#"> Setting</a></li>
+        <li><a href="#"> Help</a></li>
+        <li><a href="#"> About</a></li>
       </ul>
     </div>
   </div>

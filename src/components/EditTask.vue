@@ -34,7 +34,7 @@ export default class BaseTask extends Vue {
   desc = this.todo.desc
 
   open: false = false
-  
+
   closeWindow(): void {
     this.todo.title = this.title
     this.todo.desc = this.desc
@@ -52,25 +52,26 @@ export default class BaseTask extends Vue {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: #999900;
+  background-color: #201e1e;
   color: black;
-  border: 4px solid black;
+  border: 4px solid #999900;
 
   .title {
     color: #201e1e;
     font-weight: 700;
   }
   button {
+    width: 100px;
+    padding: 5px 20px;
+    margin-top: 20px;
     z-index: 1;
     position: relative;
     font-size: inherit;
     font-family: inherit;
     color: white;
-    width: 100px;
-    height: 40px;
     outline: none;
-    border: none;
-    background-color: #201e1e;
+    background-color: #221a1a;
+     border: 1px solid #999900;
   }
 
   button:hover {
@@ -110,9 +111,9 @@ input {
   color: white;
   font-size: inherit;
   font-family: inherit;
-  background-color: #201e1e;
+  background-color: #221a1a;
+  border: 1px solid #999900;
   padding: 0.35em 0.45em;
-  border: 1px solid transparent;
   transition: background-color 0.3s ease-in-out;
 }
 
