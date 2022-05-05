@@ -1,9 +1,9 @@
 <template>
   <div class="add-todo">
     <form>
-      <input v-model="title" type="text" placeholder="Title"  required/>
+      <input v-model="title" type="text" placeholder="Title" required />
       <input v-model="desc" type="text" placeholder="Description" required />
-      <input @click="addTask()" type="submit" value="Submit" />
+      <input @click="addTask()" type="button" value="submit" />
     </form>
   </div>
 </template>
@@ -23,9 +23,7 @@ export interface TaskInterface {
 export default class AddTask extends Vue {
   title = ''
   desc = ''
-  todos: TaskInterface[] = localStorage.todos
-    ? JSON.parse(localStorage.todos)
-    : []
+  todos: TaskInterface[] = []
 
   addTask(): void {
     this.todos.push({
@@ -34,7 +32,9 @@ export default class AddTask extends Vue {
       desc: this.desc,
       completed: true,
     })
-    localStorage.setItem('todos', JSON.stringify(this.todos))
+    this.title = "",
+    this.desc = "",
+    this.$emit('newTodo', this.todos)
   }
 }
 </script>
@@ -56,7 +56,7 @@ select {
   box-sizing: border-box;
 }
 
-input[type='submit'] {
+input[type='button'] {
   width: 100%;
   background-color: #999900;
   color: white;
@@ -67,7 +67,7 @@ input[type='submit'] {
   cursor: pointer;
 }
 
-input[type='submit']:hover {
+input[type='button']:hover {
   background-color: #cccc00;
 }
 </style>

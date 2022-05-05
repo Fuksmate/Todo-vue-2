@@ -1,7 +1,11 @@
 <template>
   <div class="main-section">
-    <AddTask />
-    <BaseTask v-for="todo in todos" :key="todo.id" :todo="todo" />
+    <AddTask @newTodo="newTodo" />
+    <BaseTask
+      v-for="todo in todos"
+      :key="todo.id"
+      :todo="todo"
+    />
   </div>
 </template>
 
@@ -18,9 +22,11 @@ import TaskInterface from './AddTask.vue'
   },
 })
 export default class MainSection extends Vue {
-  todos: TaskInterface[] = localStorage.todos
-    ? JSON.parse(localStorage.todos)
-    : []
+  todos: TaskInterface[] = []
+  
+  newTodo(e: TaskInterface): void {
+   this.todos = e
+  }
 }
 </script>
 
