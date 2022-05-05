@@ -9,35 +9,35 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue, Prop } from 'vue-property-decorator'
+import { Component, Vue, Prop } from "vue-property-decorator";
 
 export interface TaskInterface {
-  title: string
-  desc: string
-  id: number
-  completed: boolean
+  title: string;
+  desc: string;
+  id: number;
+  completed: boolean;
 }
 @Component({
   components: {},
 })
 export default class AddTask extends Vue {
-  @Prop({ required: true }) todos!: TaskInterface[]
+  @Prop({ required: true }) todos!: TaskInterface[];
 
-  title = ''
-  desc = ''
+  title = "";
+  desc = "";
 
-    RadnomNumber(): number {
-        return Math.floor(Math.random() * 100) + 1
-    }
+  RadnomNumber(): number {
+    return Math.floor(Math.random() * 100) + 1;
+  }
 
   addTask(): void {
     this.todos.push({
-      id: this.RandomNumber(),
+      id: this.RadnomNumber(),
       title: this.title,
       desc: this.desc,
       completed: true,
-    })
-    ;(this.title = ''), (this.desc = ''), this.$emit('newTodo', this.todos)
+    });
+    (this.title = ""), (this.desc = ""), this.$emit("newTodo", this.todos);
   }
 }
 </script>
@@ -47,7 +47,7 @@ export default class AddTask extends Vue {
   width: 35%;
   margin: 80px auto;
 }
-input[type='text'],
+input[type="text"],
 select {
   width: 100%;
   padding: 12px 20px;
@@ -59,7 +59,7 @@ select {
   box-sizing: border-box;
 }
 
-input[type='button'] {
+input[type="button"] {
   width: 100%;
   background-color: #999900;
   color: white;
@@ -70,7 +70,7 @@ input[type='button'] {
   cursor: pointer;
 }
 
-input[type='button']:hover {
+input[type="button"]:hover {
   background-color: #cccc00;
 }
 </style>
