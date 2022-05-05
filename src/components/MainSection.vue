@@ -1,10 +1,12 @@
 <template>
   <div class="main-section">
-    <AddTask @newTodo="newTodo" />
+    <AddTask :todos="todos" @newTodo="newTodo" />
     <BaseTask
       v-for="todo in todos"
       :key="todo.id"
       :todo="todo"
+      @removeTask="removeTask"
+      @isCompleted="isCompleted"
     />
   </div>
 </template>
@@ -23,9 +25,17 @@ import TaskInterface from './AddTask.vue'
 })
 export default class MainSection extends Vue {
   todos: TaskInterface[] = []
-  
+
   newTodo(e: TaskInterface): void {
-   this.todos = e
+    this.todos = e
+  }
+  removeTask(e: number): void {
+    this.todos = this.todos.filter(function (obj) {
+      return obj.id != e
+    })
+  }
+  isCompleted(e: number): void {
+    console.log(e)
   }
 }
 </script>

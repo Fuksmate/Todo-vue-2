@@ -9,7 +9,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
+import { Component, Vue, Prop } from 'vue-property-decorator'
 
 export interface TaskInterface {
   title: string
@@ -21,20 +21,19 @@ export interface TaskInterface {
   components: {},
 })
 export default class AddTask extends Vue {
+  @Prop({ required: true }) todos!: TaskInterface[]
+
   title = ''
   desc = ''
-  todos: TaskInterface[] = []
 
   addTask(): void {
     this.todos.push({
-      id: Math.random(),
+      id: Math.random() + 1,
       title: this.title,
       desc: this.desc,
       completed: true,
     })
-    this.title = "",
-    this.desc = "",
-    this.$emit('newTodo', this.todos)
+    ;(this.title = ''), (this.desc = ''), this.$emit('newTodo', this.todos)
   }
 }
 </script>

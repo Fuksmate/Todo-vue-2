@@ -5,9 +5,17 @@
       {{ todo.desc }}
     </span>
     <div class="button-section">
-      <button @click="open = true" class="button" type="button"></button>
-      <button class="button" type="button"></button>
-      <button class="button" type="button"></button>
+      <button @click="open = true" class="button red" type="button"></button>
+      <button
+        @click="removeTask(todo.id)"
+        class="button yellow"
+        type="button"
+      ></button>
+      <button
+        @click="isCompleted(todo.id)"
+        class="button green"
+        type="button"
+      ></button>
     </div>
     <EditTask v-if="open" @closeWindow="closeWindow" />
   </div>
@@ -25,9 +33,15 @@ export default class BaseTask extends Vue {
   @Prop({ required: true }) todo!: TaskInterface
 
   open: false = false
-  
+
   closeWindow(close: false): void {
     this.open = close
+  }
+  removeTask(e: number): void {
+    this.$emit('removeTask', e)
+  }
+  isCompleted(e: number): void {
+    this.$emit('isCompleted', e)
   }
 }
 </script>
@@ -88,13 +102,21 @@ export default class BaseTask extends Vue {
     }
 
     .button {
-      background-color: #999900;
       border: none;
       color: white;
       padding: 15px 15px;
       margin: 0 5px;
       text-decoration: none;
       cursor: pointer;
+    }
+    .red {
+      background-color: red;
+    }
+    .yellow {
+      background-color: #999900;
+    }
+    .green {
+      background-color: green;
     }
   }
 }
