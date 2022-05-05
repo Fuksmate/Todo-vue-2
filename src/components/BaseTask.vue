@@ -17,7 +17,7 @@
         type="button"
       ></button>
     </div>
-    <EditTask v-if="open" @closeWindow="closeWindow" />
+    <EditTask v-if="open" @closeWindow="closeWindow" :todo="todo" />
   </div>
 </template>
 

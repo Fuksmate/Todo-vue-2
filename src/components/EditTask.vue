@@ -2,14 +2,14 @@
   <div class="modal">
     <p class="title">Edytuj swój task</p>
     <div class="input">
-      <input type="text" placeholder="Title" />
+      <input type="text" v-model="title" required />
       <span class="bottom"></span>
       <span class="right"></span>
       <span class="top"></span>
       <span class="left"></span>
     </div>
     <div class="input">
-      <input type="text" placeholder="Description" />
+      <input type="text" v-model="desc" required />
       <span class="bottom"></span>
       <span class="right"></span>
       <span class="top"></span>
@@ -20,14 +20,24 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
+import { Component, Vue, Prop } from 'vue-property-decorator'
+
+import TaskInterface from './AddTask.vue'
 
 @Component({
   components: {},
 })
 export default class BaseTask extends Vue {
+  @Prop({ required: true }) todo!: TaskInterface
+
+  title = this.todo.title
+  desc = this.todo.desc
+
   open: false = false
+  
   closeWindow(): void {
+    this.todo.title = this.title
+    this.todo.desc = this.desc
     this.$emit('closeWindow', false)
   }
 }
